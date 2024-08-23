@@ -10,7 +10,7 @@
 
 require 'csv'
 
-CSV.foreach(Rails.root.join('db\seeds\question.csv'), headers: true) do |row|
+CSV.foreach(Rails.root.join('db/seeds/question.csv'), headers: true) do |row|
   Question.create!({
     question: row['question'],
     correct: row['correct']
