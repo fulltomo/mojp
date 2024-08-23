@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>ランキング</h2>
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>順位</th>
+        <th>プレイヤー名</th>
+        <th>スコア</th>
+        <th>タイム</th>
+        <th>日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rankings.each_with_index do |ranking, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= ranking.player_name %></td>
+          <td><%= ranking.score %></td>
+          <td><%= ranking.time.round(2) %>秒</td>
+          <td><%= ranking.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <%= link_to root_path, class: "btn btn-secondary" do %>
+      <i class="fas fa-house"></i> ホームに戻る
+    <% end %>
+  </div>
+</div>

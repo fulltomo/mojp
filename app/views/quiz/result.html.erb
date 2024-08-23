@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>クイズ結果</h2>
+  <p>スコア: <%= @score %></p>
+  <p>正解数: <%= @questions.zip(@answers).count { |q, a| q.correct.downcase == a.to_s.downcase } %> / <%= @questions.length %></p>
+  <p>タイム: <%= @time_taken %>秒</p>
+
+  <h3>詳細結果</h3>
+  <div class="detailed-results">
+    <% @questions.each_with_index do |question, index| %>
+      <% answer = @answers[index] %>
+      <div class="result-item <%= question.correct.downcase == answer.to_s.downcase ? 'correct' : 'incorrect' %>">
+        <p>問題 <%= index + 1 %>: <%= question.question %></p>
+        <p>あなたの回答: <%= answer %></p>
+        <p>正解: <%= question.correct %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="buttons">
+    <%= link_to quiz_start_path, class: "btn btn-primary" do %>
+      <i class="fas fa-rotate-right"></i> もう一度挑戦
+    <% end %>
+    <%= link_to root_path, class: "btn btn-secondary" do %>
+      <i class="fas fa-house"></i> ホームに戻る
+    <% end %>
+    <button id="save-ranking-btn" class="btn btn-success"><i class="fas fa-trophy"></i>ランキングに登録</button>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const saveRankingBtn = document.getElementById('save-ranking-btn');
+    
+    saveRankingBtn.addEventListener('click', () => {
+      const playerName = prompt('プレイヤー名を入力してください:');
+      if (playerName) {
+        fetch('/rankings', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+          },
+          body: JSON.stringify({ 
+            ranking: { 
+              player_name: playerName, 
+              score: <%= @score %>, 
+              time: <%= @time_taken %> 
+            } 
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            alert('ランキングに登録しました！');
+            window.location.href = '/rankings';
+          } else {
+            alert('ランキングの登録に失敗しました。');
+          }
+        });
+      }
+    });
+  });
+</script>

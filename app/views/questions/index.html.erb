@@ -1,0 +1,46 @@
+<div class="container">
+  <h2>問題リスト</h2>
+  <div class="button-container"><button id="toggle-answers-btn" class="btn btn-info">正解を表示/非表示（Enter）</button></div>
+  <table class="questions-table">
+    <thead>
+      <tr>
+        <th>問題</th>
+        <th class="answer-column">正解</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.question %></td>
+          <td class="answer-column"><%= question.correct %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <%= link_to root_path, class: "btn btn-secondary" do %>
+      <i class="fas fa-house"></i> ホームに戻る
+    <% end %>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggleAnswersBtn = document.getElementById('toggle-answers-btn');
+    const answerColumns = document.querySelectorAll('.answer-column');
+    
+    const toggleAnswers = () => {
+      answerColumns.forEach(column => {
+        column.style.display = column.style.display === 'none' ? '' : 'none';
+      });
+    };
+    
+    toggleAnswersBtn.addEventListener('click', toggleAnswers);
+    
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        toggleAnswers();
+      }
+    });
+  });
+</script>

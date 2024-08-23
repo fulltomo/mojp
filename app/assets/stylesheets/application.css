@@ -1,0 +1,140 @@
+body {
+    font-family: 'Rounded Mplus 1c', sans-serif;
+    /* background-color: #f0f8ff; */
+    background-color: #C8E7FC;
+    background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+    background-size: 3rem 3rem;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1, h2, h3 {
+    color: #4a69bd;
+    text-align: center;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color:white;
+    background-color: #f4a460;
+    text-decoration: none;
+  }
+  
+  /* .btn-primary {
+    background-color: #4a69bd;
+    color: white;
+  }
+  
+  .btn-secondary {
+    background-color: #60a3bc;
+    color: white;
+  }
+  
+  .btn-info {
+    background-color: #82ccdd;
+    color: white;
+  } */
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  #countdown {
+    font-size: 72px;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #timer {
+    text-align: right;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .detailed-results {
+    margin-top: 20px;
+  }
+  
+  .result-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .result-item.correct {
+    border-color: #2ecc71;
+  }
+  
+  .result-item.incorrect {
+    border-color: #e74c3c;
+  }
+  
+  .result-item p {
+    margin: 5px 0;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #4a69bd;
+    color: white;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .fas {
+    margin-right: 7px;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    color:#666;
+  }
+
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
